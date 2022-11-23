@@ -1,5 +1,4 @@
 import logging
-from collections import deque
 
 
 def gest_form(numbers: list) -> str:
@@ -7,7 +6,7 @@ def gest_form(numbers: list) -> str:
     Input a list of numbers and returns a joined string with converted numbers,
     based on their values.
     """
-    result: deque = deque()
+    result: list = []
     for number in numbers:
         try:
             if number < -1000 or number > 1000:
