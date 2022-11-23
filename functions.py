@@ -1,16 +1,27 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import logging
+from collections import deque
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+def gest_form(numbers: list) -> str:
+    """
+    Input a list of numbers and returns a joined string with converted numbers,
+    based on their values.
+    """
+    result: deque = deque()
+    for number in numbers:
+        try:
+            if number < -1000 or number > 1000:
+                logging.error(f"{number} is not accepted")
+                raise ValueError
+        except TypeError:
+            logging.error(f"Wrong type for: {number}")
+            raise
+        if number % 15 == 0:
+            result.append("Gestform")
+        elif number % 3 == 0:
+            result.append("Geste")
+        elif number % 5 == 0:
+            result.append("Forme")
+        else:
+            result.append(str(number))
+    return "".join(result)
