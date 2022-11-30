@@ -10,6 +10,7 @@ packages = [{include = "basic_functions"}]
 python = "^3.10"
 pytest = "^7.2.0"
 black = "^22.10.0"
+mypy = "^0.991"
 
 
 [build-system]

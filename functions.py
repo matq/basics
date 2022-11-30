@@ -1,6 +1,8 @@
 import logging
 from collections import deque
 
+from decorators import timeit
+
 
 def gest_form(numbers: list) -> str:
     """
@@ -26,3 +28,25 @@ def gest_form(numbers: list) -> str:
         else:
             result.append(str(number))
     return "".join(result)
+
+
+def binary_gap(number: int) -> int:
+    """
+
+    :rtype: object
+    """
+    try:
+        binary_string: str = str(bin(number)[2:])
+    except TypeError:
+        logging.error(f"Wrong type for: {number}")
+        raise TypeError
+    max_gap: int = 0
+    current_gap: int = 0
+    for n in binary_string:
+        if int(n) == 1:
+            if current_gap > max_gap:
+                max_gap = current_gap
+            current_gap = 0
+        elif int(n) == 0:
+            current_gap += 1
+    return max_gap
